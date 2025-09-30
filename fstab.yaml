@@ -1,4 +1,4 @@
 mountpoints:
   /:
-    url: https://content.da.live/aemsites/da-block-collection/
+    url: https://content.da.live/prator12-sudo/ap2-demo/
     type: markup
