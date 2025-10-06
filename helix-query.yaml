@@ -12,7 +12,7 @@ indices:
       - /style-guide/**
       - /spreadsheets/**
       - /content/mysite/en
-    target: /docs/library/blocks/sample-search-data/query-index.json
+    target: /query-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
