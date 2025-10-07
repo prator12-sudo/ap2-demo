@@ -1,43 +1,34 @@
-version: 1
+auto-generated: true
 indices:
-  default:
+  main:
     include:
       - /**
-    exclude:
-      - /configuration/**
-      - /nav/**
-      - /footer/**
-      - /metadata/**
-      - /fragments/**
-      - /style-guide/**
-      - /spreadsheets/**
-      - /content/mysite/en
     target: /query-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        value: |
+          attribute(el, "content")
       description:
         select: head > meta[name="description"]
-        value: attribute(el, "content")
-      image:
-        select: head > meta[property="og:image"]
-        value:  match(attribute(el, 'content'), 'https://[^/]+(/.*)')
-      imageAlt:
-        select: head > meta[property="og:image:alt"]
-        value: attribute(el, "content")
-      topics:
-        select: head > meta[name="topics"]
-        value: attribute(el, "content")
-      cq-tags:
-        select: head > meta[name="cq-tags"]
-        value: attribute(el, "content")
-      category:
-        select: head > meta[name="category"]
-        value: attribute(el, "content")
+        value: |
+          attribute(el, "content")
+      date:
+        select: head > meta[name="publication-date"]
+        value: |
+          dateValue(attribute(el, 'content'), 'MM-DD-YYYY')
       lastModified:
         select: none
-        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
-      robots:
-        select: head > meta[name="robots"]
-        value: attribute(el, "content")y
+        value: |
+          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+      image:
+        select: head > meta[property="og:image"]
+        value: |
+          match(attribute(el, "content"), "https:\/\/[^/]+(/.*)")
+      content:
+        select: main > div
+        values: characters(textContent(el), 0, 200)
+      tags:
+        select: head > meta[property="article:tag"]
+        values: |
+          attribute(el, 'content')
