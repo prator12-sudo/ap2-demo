@@ -3,7 +3,7 @@ indices:
   main:
     include:
       - /**
-    target: /query-index2.json
+    target: /query-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
