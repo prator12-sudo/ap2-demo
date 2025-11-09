@@ -236,6 +236,7 @@ function searchInput(block, config) {
 function searchIcon() {
   const icon = document.createElement('span');
   icon.classList.add('icon', 'icon-search');
+   console.log('searchIcon:');
   return icon;
 }
 
@@ -252,7 +253,9 @@ function searchBox(block, config) {
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
+  console.log('Search block:', block);
   const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : '/query-index.json';
+  console.log('Search source:', source);
   block.innerHTML = '';
   block.append(
     searchBox(block, { source, placeholders }),
